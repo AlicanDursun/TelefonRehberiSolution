@@ -38,8 +38,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContactService.Api", "Src\S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportService.Api", "Src\Services\ReportService\ReportService.Api\ReportService.Api.csproj", "{0751CAE7-BC2D-4506-BA0D-7B23F7F47CFD}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker-Compose-file", "Docker-Compose-file", "{5EDA16DB-4BCB-4079-B53B-F403D2B7E85C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
