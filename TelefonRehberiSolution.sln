@@ -20,23 +20,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{41
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApiGateway", "WebApiGateway", "{D13956DD-7416-48A5-9B1B-1988FC30A2F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.ApiGateway", "Src\ApiGateways\Web.ApiGateway\Web.ApiGateway.csproj", "{04A9A519-6B43-4A12-921D-EB7A7F0A8ACE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.ApiGateway", "Src\ApiGateways\Web.ApiGateway\Web.ApiGateway.csproj", "{04A9A519-6B43-4A12-921D-EB7A7F0A8ACE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EventBus", "EventBus", "{4B120946-7865-4505-B5B7-D87C9E6721E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBus.Base", "Src\BuildingBlocks\EventBus\EventBus.Base\EventBus.Base.csproj", "{2CE67CA6-5140-4EDD-8F8E-444847A2EFC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus.Base", "Src\BuildingBlocks\EventBus\EventBus.Base\EventBus.Base.csproj", "{2CE67CA6-5140-4EDD-8F8E-444847A2EFC4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBus.Factory", "Src\BuildingBlocks\EventBus\EventBus.Factory\EventBus.Factory.csproj", "{DBD792E1-62D5-40F4-A216-84D792DEBDBD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus.Factory", "Src\BuildingBlocks\EventBus\EventBus.Factory\EventBus.Factory.csproj", "{DBD792E1-62D5-40F4-A216-84D792DEBDBD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBus.RabbitMQ", "Src\BuildingBlocks\EventBus\EventBus.RabbitMQ\EventBus.RabbitMQ.csproj", "{B44B9855-355B-4061-AC99-62E6369700D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus.RabbitMQ", "Src\BuildingBlocks\EventBus\EventBus.RabbitMQ\EventBus.RabbitMQ.csproj", "{B44B9855-355B-4061-AC99-62E6369700D9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ContactService", "ContactService", "{64E476BD-53CD-4218-932B-E7F04643F34E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReportService", "ReportService", "{4725FBE6-8C77-4FD8-B459-F47568F99E81}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactService.Api", "Src\Services\ContactService\ContactService.Api\ContactService.Api.csproj", "{348C8818-1372-466E-9C4D-DF1439FC95FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContactService.Api", "Src\Services\ContactService\ContactService.Api\ContactService.Api.csproj", "{348C8818-1372-466E-9C4D-DF1439FC95FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportService.Api", "Src\Services\ReportService\ReportService.Api\ReportService.Api.csproj", "{0751CAE7-BC2D-4506-BA0D-7B23F7F47CFD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportService.Api", "Src\Services\ReportService\ReportService.Api\ReportService.Api.csproj", "{0751CAE7-BC2D-4506-BA0D-7B23F7F47CFD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker-Compose-file", "Docker-Compose-file", "{5EDA16DB-4BCB-4079-B53B-F403D2B7E85C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
