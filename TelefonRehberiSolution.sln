@@ -38,10 +38,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContactService.Api", "Src\S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportService.Api", "Src\Services\ReportService\ReportService.Api\ReportService.Api.csproj", "{0751CAE7-BC2D-4506-BA0D-7B23F7F47CFD}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{A76F5CA6-8232-46E5-BE04-2F747DFDA92D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBus.UnitTest", "Tests\BuildingBlocks\EventBus.UnitTest\EventBus.UnitTest.csproj", "{8F55962C-530E-42F7-9C29-6CE2AC0C32FC}"
-EndProject
+
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
