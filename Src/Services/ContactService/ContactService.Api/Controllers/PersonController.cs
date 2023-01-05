@@ -47,7 +47,7 @@ namespace ContactService.Api.Controllers
         [Route("person/{id:guid}")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-        public async Task<ActionResult<Person>> ItemByIdAsync(Guid id)
+        public async Task<ActionResult<Person>> PersonByIdAsync(Guid id)
         {
             if (id.ToString() == null)
                 return BadRequest();
@@ -59,10 +59,25 @@ namespace ContactService.Api.Controllers
 
             return NotFound();
         }
+
+        [HttpGet]
+        [Route("personwithdetails")]
+        [ProducesResponseType(typeof(List<Person>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        public async Task<IActionResult> PersonWithDetailsAsync()
+        {
+            var personsWithDetails = await _genericRepository.Get(i=>i.PersonInformations);
+
+            if (personsWithDetails.Count > 0)
+                return Ok(personsWithDetails);
+
+            return NotFound();
+        }
+        
         [HttpDelete]
         [ProducesResponseType((int)HttpStatusCode.NoContent)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
-        public async Task<ActionResult> DeleteProductAsync(Guid id)
+        public async Task<ActionResult> DeletePersonAsync(Guid id)
         {
             var dbPerson = await _genericRepository.GetById(id);
             if (dbPerson == null)

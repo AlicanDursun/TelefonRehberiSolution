@@ -12,7 +12,8 @@ namespace ContactService.Api.Infrastructure.EntityConfigurations
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).ValueGeneratedOnAdd();
 
-            builder.Property<int>("PersonId").IsRequired();
+          
+                
         }
     }
 }

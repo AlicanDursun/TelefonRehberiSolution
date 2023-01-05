@@ -1,4 +1,5 @@
-﻿using ContactService.Api.SeedWork;
+﻿using ContactService.Api.Core.Application.ViewModel;
+using ContactService.Api.SeedWork;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
@@ -16,5 +17,7 @@ namespace ContactService.Api.Core.Application.Interfaces.Repositories
 
         Task<T> GetByIdAsync(Guid id, params Expression<Func<T, object>>[] includes);
         Task<List<T>> Get(params Expression<Func<T, object>>[] includes);
+
+      
     }
 }

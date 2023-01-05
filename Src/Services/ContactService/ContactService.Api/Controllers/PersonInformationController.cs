@@ -1,7 +1,9 @@
 ﻿using ContactService.Api.Core.Application.Interfaces.Repositories;
 using ContactService.Api.Core.Domain;
+using ContactService.Api.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using System.Net;
 
 namespace ContactService.Api.Controllers
@@ -10,27 +12,43 @@ namespace ContactService.Api.Controllers
     [ApiController]
     public class PersonInformationController : ControllerBase
     {
-        private readonly IGenericRepository<PersonInformation> _genericRepository;
 
-        public PersonInformationController(IGenericRepository<PersonInformation> genericRepository)
+        private readonly IGenericRepository<PersonInformation> _personInformationRepository;
+        private readonly IGenericRepository<Person> _personRepository;
+        public PersonInformationController(IGenericRepository<PersonInformation> personInformationRepository,
+            IGenericRepository<Person> personRepository)
         {
-            _genericRepository = genericRepository;
+            _personInformationRepository = personInformationRepository;
+            _personRepository = personRepository;
+
         }
 
-        [HttpGet]
-        public IActionResult Get()
-        {
-            return Ok("Contact Service is Up and Running");
-        }
+
         [HttpPost]
         [Route("personInformation")]
-        [ProducesResponseType(typeof(Person), (int)HttpStatusCode.OK)]
-       
-        public async Task<ActionResult> CreatePersonAsync([FromBody] PersonInformation personInformation)
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(PersonInformation), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult> CreatePersonInformationAsync([FromBody] PersonInformation information)
         {
-            personInformation = await _genericRepository.AddAsync(personInformation);
-            return Ok(personInformation);
-           
+            if (await _personRepository.GetById(information.PersonId) == null)
+                return BadRequest();
+
+            information = await _personInformationRepository.AddAsync(information);
+
+            return Ok(information);
+
+        }
+        [HttpDelete]
+        [ProducesResponseType((int)HttpStatusCode.NoContent)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        public async Task<ActionResult> DeletePersonInformationAsync(Guid id)
+        {
+            var dbPersonInfo = await _personInformationRepository.GetById(id);
+            if (dbPersonInfo == null)
+                return NotFound();
+
+            await _personInformationRepository.Delete(id);
+            return NoContent();
         }
     }
 }

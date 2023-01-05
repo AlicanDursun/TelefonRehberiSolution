@@ -6,15 +6,12 @@ namespace ReportService.Api.IntegrationEvents.Events
     {
 
 
-        public new int Id { get; set; }
-
-        public ExcelRequestStartedIntegrationEvent()
+        public string Location { get; set; }
+      
+        public ExcelRequestStartedIntegrationEvent(string location)
         {
-
-        }
-        public ExcelRequestStartedIntegrationEvent(int id)
-        {
-            Id = id;
+           
+            Location = location;
         }
 
 
