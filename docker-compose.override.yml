@@ -1,0 +1,109 @@
+version: '3.4'
+
+services:
+  contactservice.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5001
+      - ConsulConfig__Address=http://s_consul:8500
+      - ConsulConfig__ServiceAddress=http://contactservice:5001
+      - ConsulConfig__ServiceName=ContactService
+      - ConsulConfig__ServiceId=Contact
+    ports:
+      - "5001:5001"
+    networks:
+       - backendservices
+    depends_on:
+       - web.apigateway
+       - s_rabbitmq
+       - s_consul
+       - s_sqlserver
+    external_links:
+       - s_rabbitmq
+       - s_consul
+       - s_sqlserver 
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
+
+  reportservice.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5002
+      - ConsulConfig__Address=http://s_consul:8500
+      - ConsulConfig__ServiceAddress=http://c_reportservice:5002
+      - ConsulConfig__ServiceName=ReportService
+      - ConsulConfig__ServiceId=Report
+    ports:
+      - "5002:5002"
+    networks:
+      - backendservices
+    depends_on:
+       - web.apigateway
+       - s_rabbitmq
+       - s_consul
+       - s_sqlserver
+    external_links:
+       - s_rabbitmq
+       - s_consul
+       - s_sqlserver 
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
+  web.apigateway:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5000
+    ports:
+      - "5000:5000"
+    networks:
+      - backendservices
+    #volumes:
+    #  - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+    #  - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+  
+  s_sqlserver:
+    user: root
+    ports:
+      - 1433:1433
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=password@12345#
+    volumes:
+      - sqlserver_data:/var/opt/mssql/data
+      - sqlserver_log:/var/opt/mssql/log
+    networks:
+      - backendservices
+
+  s_consul:
+     ports:
+       - 8500:8500
+       - 8600:8600/tcp
+       - 8600:8600/udp
+     networks:
+        - backendservices
+
+  s_rabbitmq:
+     ports:
+       - 5672:5672
+       - 15672:15672
+     volumes:
+       - rabbitmq:/var/lib/rabbitmq 
+     networks:
+      - backendservices
+
+
+networks:
+   backendservices:
+       driver: bridge
+       external: true
+  
+       
+  
+volumes:
+   rabbitmq:
+   sqlserver_data:
+   sqlserver_log:
+   

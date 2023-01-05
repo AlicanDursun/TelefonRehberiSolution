@@ -11,7 +11,7 @@ namespace ContactService.Api.Infrastructure.Context
         }
         public ContactDbContext CreateDbContext(string[] args)
         {
-            var connStr = "Server=localhost;Database=contact;User ID=sa;Password=j23xmh8v5;MultipleActiveResultSets=true;TrustServerCertificate=true;";
+            var connStr = "Server=c_sqlserver;Database=contact;User ID=sa;Password=password@12345#;TrustServerCertificate=true;";
 
             var optionsBuilder = new DbContextOptionsBuilder<ContactDbContext>()
                 .UseSqlServer(connStr);

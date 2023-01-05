@@ -4,14 +4,20 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>f791dae0-4269-45f9-8908-720f1ee9ff11</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..\..\..</DockerfileContext>
+    <DockerComposeProjectPath>..\..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Consul" Version="1.6.10.8" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.1" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="5.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.1" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
