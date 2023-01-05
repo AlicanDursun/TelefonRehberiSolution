@@ -1,4 +1,5 @@
 ﻿using ContactService.Api.Core.Domain;
+using ContactService.Api.Infrastructure.EntityConfigurations;
 using Microsoft.EntityFrameworkCore;
 using Polly;
 
@@ -16,7 +17,8 @@ namespace ContactService.Api.Infrastructure.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfiguration(new PersonEntityTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new PersonInformationEntityTypeConfiguration());
         }
     }
 }

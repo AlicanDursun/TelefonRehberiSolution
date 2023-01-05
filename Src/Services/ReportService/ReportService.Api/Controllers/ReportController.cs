@@ -1,6 +1,8 @@
 ﻿using EventBus.Base.Abstraction;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ReportService.Api.Core.Application.Interfaces;
+using ReportService.Api.Core.Domain;
 using ReportService.Api.IntegrationEvents.Events;
 using System.Net;
 
@@ -12,11 +14,13 @@ namespace ReportService.Api.Controllers
     {
         private readonly IEventBus _eventBus;
         private readonly ILogger<ReportController> _logger;
+        private readonly IReportRepository _reportRepository;
 
-        public ReportController(IEventBus eventBus, ILogger<ReportController> logger)
+        public ReportController(IEventBus eventBus, ILogger<ReportController> logger,IReportRepository reportRepository)
         {
             _eventBus = eventBus;
             _logger = logger;
+            _reportRepository = reportRepository;
         }
 
         [HttpGet]
@@ -26,15 +30,15 @@ namespace ReportService.Api.Controllers
         }
 
         [HttpGet]
-        [Route("reports")]
+        [Route("reportsGetEvent")]
         [ProducesResponseType((int)HttpStatusCode.Accepted)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-        public async Task<ActionResult> GetReport()
+        public async Task<ActionResult> GetReport(string location)
         {
             await Task.Delay(1000);
             
 
-            var eventMessage = new ExcelRequestStartedIntegrationEvent();
+            var eventMessage = new ExcelRequestStartedIntegrationEvent(location);
 
             try
             {
@@ -47,6 +51,16 @@ namespace ReportService.Api.Controllers
                 throw;
             }
             return Accepted();
+        }
+       
+        [HttpGet]
+        [Route("reportsGetList")]
+        [ProducesResponseType(typeof(IEnumerable<LocationReport>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        public async Task<IActionResult> GetPersonsAsync()
+        {
+            var items = await _reportRepository.GetAll();
+            return Ok(items);
         }
     }
 }

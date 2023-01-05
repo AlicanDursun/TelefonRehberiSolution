@@ -6,10 +6,10 @@ namespace ContactService.Api.IntegrationEvents.Events
     {
 
 
-        public int Id { get; }
+    
         public string ErrorMessage { get; }
 
-        public ExcelResponseReturnedFailedIntegrationEvent(int id, string errorMessage)
+        public ExcelResponseReturnedFailedIntegrationEvent(Guid id, string errorMessage)
         {
             Id = id;
             ErrorMessage = errorMessage;

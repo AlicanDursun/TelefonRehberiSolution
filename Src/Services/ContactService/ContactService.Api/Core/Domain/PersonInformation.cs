@@ -9,18 +9,15 @@ namespace ContactService.Api.Core.Domain
         public string Location { get; private set; }
         public string Content { get; private set; }
 
-
-        public PersonInformation()
-        {
-          
-
-        }
-        public PersonInformation(string phoneNumber, string email, string location, string content)
+        public Guid PersonId { get; private set; }
+       
+        public PersonInformation(string phoneNumber, string email, string location, string content, Guid personId)
         {
             PhoneNumber = phoneNumber;
             Email = email;
             Location = location;
             Content = content;
+            PersonId = personId;
         }
     }
 }

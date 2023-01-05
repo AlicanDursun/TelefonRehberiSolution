@@ -51,6 +51,7 @@ namespace EventBus.Base.Events
             if (SubsManager.HasSubscriptionForEvent(eventName))
             {
                 var subscriptions = SubsManager.GetHandlersForEvent(eventName);
+
                 using (var scope = _serviceProvider.CreateScope())
                 {
                     foreach (var subscription in subscriptions)

@@ -5,15 +5,15 @@ namespace ContactService.Api.IntegrationEvents.Events
     public class ExcelRequestStartedIntegrationEvent:IntegrationEvent
     {
 
-        public int Id { get; set; }
 
-        public ExcelRequestStartedIntegrationEvent()
-        {
+       
+        public string Location { get; set; }
 
-        }
-        public ExcelRequestStartedIntegrationEvent(int id)
+        
+        public ExcelRequestStartedIntegrationEvent( string location)
         {
-            Id = id;
+          
+            Location = location;
         }
 
 

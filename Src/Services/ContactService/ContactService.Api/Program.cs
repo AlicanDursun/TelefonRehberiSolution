@@ -17,9 +17,11 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddLogging(conf => conf.AddConsole());
 builder.Services.ConfigureDbContext(builder.Configuration);
 builder.Services.AddTransient<ExcelRequestStartedIntegrationEventHandler>();
 builder.Services.AddScoped(typeof(IGenericRepository<>),typeof(GenericRepository<>));
+builder.Services.AddScoped<ILocationStatistic, LocationStatisticRepository>();
 builder.Services.AddSingleton<IEventBus>(sp =>
 {
     EventBusConfig config = new()
@@ -32,6 +34,7 @@ builder.Services.AddSingleton<IEventBus>(sp =>
     return EventBusFactory.Create(config, sp);
 });
 var app = builder.Build();
+
 IEventBus eventBus = app.Services.GetRequiredService<IEventBus>();
 eventBus.Subscribe<ExcelRequestStartedIntegrationEvent, ExcelRequestStartedIntegrationEventHandler>();
 // Configure the HTTP request pipeline.

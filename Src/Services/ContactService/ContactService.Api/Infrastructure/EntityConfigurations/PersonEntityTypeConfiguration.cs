@@ -12,6 +12,9 @@ namespace ContactService.Api.Infrastructure.EntityConfigurations
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).ValueGeneratedOnAdd();
 
+            builder.HasMany(w => w.PersonInformations)
+                 .WithOne()
+                 .HasForeignKey(x => x.PersonId);
             var navigation = builder.Metadata.FindNavigation(nameof(Person.PersonInformations));
 
             navigation.SetPropertyAccessMode(PropertyAccessMode.Field);

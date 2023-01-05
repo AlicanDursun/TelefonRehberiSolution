@@ -4,8 +4,20 @@ namespace ReportService.Api.IntegrationEvents.Events
 {
     public class ExcelResponseReturnedSuccessIntegrationEvent:IntegrationEvent
     {
-        public new int Id { get; }
+     
+        public string Location { get; set; }
+        public int PersonCount { get; set; }
+        public int PhoneNumberCount { get; set; }
 
-        public ExcelResponseReturnedSuccessIntegrationEvent(int id) => Id = id;
+
+        public ExcelResponseReturnedSuccessIntegrationEvent(string location, int personCount, int phoneNumberCount)
+
+        {
+        
+            Location = location;
+            PersonCount = personCount;
+            PhoneNumberCount = phoneNumberCount;
+
+        }
     }
 }
