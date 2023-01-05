@@ -5,7 +5,7 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{763A0842-0A34-4971-B2E0-0EB49CD9ABEF}"
 	ProjectSection(SolutionItems) = preProject
-		ServiceUrls.txt = ServiceUrls.txt
+		SolutionItems\ServiceUrls.txt = SolutionItems\ServiceUrls.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{B1EEB894-996E-4971-9C77-16E6C0AA8386}"
@@ -42,6 +42,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus.UnitTest", "Tests\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{C0558F29-464C-4350-8E30-78ADC0F2E40F}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{3136D73A-B53F-4AEC-A337-78DF7A005903}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -76,6 +78,10 @@ Global
 		{AF3F27A3-237D-4AAE-8B4A-1F7E8302B616}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF3F27A3-237D-4AAE-8B4A-1F7E8302B616}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF3F27A3-237D-4AAE-8B4A-1F7E8302B616}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3136D73A-B53F-4AEC-A337-78DF7A005903}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3136D73A-B53F-4AEC-A337-78DF7A005903}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3136D73A-B53F-4AEC-A337-78DF7A005903}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3136D73A-B53F-4AEC-A337-78DF7A005903}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

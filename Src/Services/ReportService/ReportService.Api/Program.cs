@@ -7,10 +7,16 @@ using ReportService.Api.Extensions;
 using ReportService.Api.Core.Application.Interfaces;
 using ReportService.Api.Services;
 using ReportService.Api.Infrastucture.Context;
+using RabbitMQ.Client;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Host.UseDefaultServiceProvider((context, options) =>
+{
+    options.ValidateOnBuild = false;
+    options.ValidateScopes = false;
+});
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -21,7 +27,7 @@ builder.Services.ConfigureDbContext(builder.Configuration);
 builder.Services.AddTransient<ExcelResponseReturnedFailedIntegrationEventHandler>();
 builder.Services.AddTransient<ExcelResponseReturnedSuccessIntegrationEventHandler>();
 builder.Services.AddScoped<IReportRepository, ReportRepository>();
-
+builder.Services.ConfigureConsul(builder.Configuration);
 builder.Services.AddSingleton<IEventBus>(sp =>
 {
     EventBusConfig config = new()
@@ -29,7 +35,11 @@ builder.Services.AddSingleton<IEventBus>(sp =>
         ConnectionRetryCount = 5,
         EventNameSuffix = "IntegrationEvent",
         SubscriberClientAppName = "ReportService",
-        EventBusType = EventBusType.RabbitMQ
+        EventBusType = EventBusType.RabbitMQ,
+        Connection = new ConnectionFactory()
+        {
+            HostName = "c_rabbitmq",
+        }
     };
     return EventBusFactory.Create(config, sp);
 });
@@ -59,5 +69,5 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-
+app.RegisterWithConsul(app.Lifetime,builder.Configuration);
 app.Run();

@@ -16,11 +16,10 @@ namespace ContactService.Api.Infrastructure.Context
                     logger.LogWarning(exception, $"Exception {exception} with message {exception.Message} detected on attempt {retry}");
                 }
                 );
-            var setupDirPath = Path.Combine(env.ContentRootPath, "Infrastructure", "Setup", "SeedFiles");
-            var picturePath = "Pics";
-            await policy.ExecuteAsync(() => ProcessSeeding(context, setupDirPath, picturePath, logger));
+
+            await policy.ExecuteAsync(() => ProcessSeeding(context, logger));
         }
-        private async Task ProcessSeeding(ContactDbContext context, string setupDirPath, string picturePath, ILogger logger)
+        private async Task ProcessSeeding(ContactDbContext context, ILogger logger)
         {
             if (!context.Persons.Any())
             {
@@ -30,7 +29,7 @@ namespace ContactService.Api.Infrastructure.Context
             {
                 await context.SaveChangesAsync();
             }
-           
+
         }
     }
 }

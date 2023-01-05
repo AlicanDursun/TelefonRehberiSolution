@@ -7,7 +7,7 @@ namespace ReportService.Api.Infrastucture.Context
     {
         public ReportDbContext CreateDbContext(string[] args)
         {
-            var connStr = "Server=localhost;Database=report;User ID=sa;Password=j23xmh8v5;MultipleActiveResultSets=true;TrustServerCertificate=true;";
+            var connStr = "Server=c_sqlserver;Database=report;User ID=sa;Password=password@12345#;TrustServerCertificate=true;";
 
             var optionsBuilder = new DbContextOptionsBuilder<ReportDbContext>()
                 .UseSqlServer(connStr);

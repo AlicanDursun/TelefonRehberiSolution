@@ -8,8 +8,15 @@ using ContactService.Api.Infrastructure.Context;
 using ContactService.Api.Core.Application.Interfaces.Repositories;
 using ContactService.Api.Services;
 using ContactService.Api.Core.Domain;
+using RabbitMQ.Client;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Host.UseDefaultServiceProvider((context, options) =>
+{
+    options.ValidateOnBuild = false;
+    options.ValidateScopes = false;
+});
 
 // Add services to the container.
 
@@ -22,6 +29,7 @@ builder.Services.ConfigureDbContext(builder.Configuration);
 builder.Services.AddTransient<ExcelRequestStartedIntegrationEventHandler>();
 builder.Services.AddScoped(typeof(IGenericRepository<>),typeof(GenericRepository<>));
 builder.Services.AddScoped<ILocationStatistic, LocationStatisticRepository>();
+builder.Services.ConfigureConsul(builder.Configuration);
 builder.Services.AddSingleton<IEventBus>(sp =>
 {
     EventBusConfig config = new()
@@ -29,7 +37,11 @@ builder.Services.AddSingleton<IEventBus>(sp =>
         ConnectionRetryCount = 5,
         EventNameSuffix = "IntegrationEvent",
         SubscriberClientAppName = "ContactService",
-        EventBusType = EventBusType.RabbitMQ
+        EventBusType = EventBusType.RabbitMQ,
+        Connection = new ConnectionFactory()
+        {
+            HostName = "c_rabbitmq",
+        }
     };
     return EventBusFactory.Create(config, sp);
 });
@@ -57,5 +69,5 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-
+app.RegisterWithConsul(app.Lifetime,builder.Configuration);
 app.Run();

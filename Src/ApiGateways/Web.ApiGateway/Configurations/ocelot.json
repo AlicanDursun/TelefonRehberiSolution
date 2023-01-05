@@ -1,0 +1,34 @@
+{
+  "Routes": [
+    {
+      "UseServiceDiscovery": true,
+      "ServiceName": "ContactService",
+      "DownstreamPathTemplate": "/api/contact/{everything}",
+      "DownstreamScheme": "http",
+
+      "UpstreamPathTemplate": "/contact/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Delete", "Put" ],
+      "UpstreamScheme": "http"
+
+    },
+    {
+      "UseServiceDiscovery": true,
+      "ServiceName": "ReportService",
+      "DownstreamPathTemplate": "/api/report/{everything}",
+      "DownstreamScheme": "http",
+
+      "UpstreamPathTemplate": "/report/{everything}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "UpstreamScheme": "http"
+
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://web.apigateway:5000",
+    "ServiceDiscoveryProvider": {
+      "Host": "c_consul",
+      "Port": 8500,
+      "Type": "Consul"
+    }
+  }
+}
