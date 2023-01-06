@@ -39,6 +39,7 @@ namespace ContactService.Api.Controllers
 
         }
         [HttpDelete]
+        [Route("personInformationremove")]
         [ProducesResponseType((int)HttpStatusCode.NoContent)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         public async Task<ActionResult> DeletePersonInformationAsync(Guid id)
