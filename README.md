@@ -31,6 +31,7 @@ http://localhost:5000/swagger/index.html
 4- Kişi Ekleme(Post)                               :  http://localhost:5000/Person/person
 
 Örnek Body json
+
 { "name": "string","surName": "string","company": "string"}
         
 5- Tek Kişi Getirme(Get)                           :  http://localhost:5000/Person/person/9859a2ae-c2ed-4da4-8d46-d8d02ad6603d  
@@ -38,6 +39,7 @@ http://localhost:5000/swagger/index.html
 6- Kişi Detay Bilgisi Ekleme(Post)                 :  http://localhost:5000/PersonInformation/personInformation
 
 Örnek Body json
+
 { "phoneNumber": "string","email": "string","location": "string","content": "string","personId": "d0b3eac4-f86d-4658-a160-620bcd6c3fe9"}
 
 7- Kişi Detay Bilgileri Silme                      :  http://localhost:5000/PersonInformation/personInformationremove?id=adb46b8d-34ac-467a-dda3-08daef6e44f3 (gibi)
