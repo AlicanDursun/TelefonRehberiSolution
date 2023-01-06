@@ -36,12 +36,11 @@ namespace ContactService.Api.Controllers
         [HttpPost]
         [Route("person")]
         [ProducesResponseType(typeof(Person), (int)HttpStatusCode.OK)]
-        //[ProducesResponseType((int)HttpStatusCode.Created)]
         public async Task<ActionResult> CreatePersonAsync([FromBody] Person person)
         {
             person = await _genericRepository.AddAsync(person);
             return Ok(person);
-            //return CreatedAtRoute("ItemByIdAsync", new { id = person.Id }, null);
+           
         }
         [HttpGet]
         [Route("person/{id:guid}")]
@@ -75,6 +74,7 @@ namespace ContactService.Api.Controllers
         }
         
         [HttpDelete]
+        [Route("personremove")]
         [ProducesResponseType((int)HttpStatusCode.NoContent)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         public async Task<ActionResult> DeletePersonAsync(Guid id)

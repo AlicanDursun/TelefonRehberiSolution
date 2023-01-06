@@ -6,7 +6,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:5001
       - ConsulConfig__Address=http://s_consul:8500
-      - ConsulConfig__ServiceAddress=http://contactservice:5001
+      - ConsulConfig__ServiceAddress=http://c_contactservice:5001
       - ConsulConfig__ServiceName=ContactService
       - ConsulConfig__ServiceId=Contact
     ports:
@@ -67,10 +67,10 @@ services:
   s_sqlserver:
     user: root
     ports:
-      - 1433:1433
+      - 8001:1433
     environment:
       - ACCEPT_EULA=Y
-      - MSSQL_SA_PASSWORD=password@12345#
+      - SA_PASSWORD=password@12345#
     volumes:
       - sqlserver_data:/var/opt/mssql/data
       - sqlserver_log:/var/opt/mssql/log

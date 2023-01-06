@@ -3,12 +3,27 @@
     {
       "UseServiceDiscovery": true,
       "ServiceName": "ContactService",
-      "DownstreamPathTemplate": "/api/contact/{everything}",
+      "DownstreamPathTemplate": "/api/person/{everything}",
       "DownstreamScheme": "http",
 
-      "UpstreamPathTemplate": "/contact/{everything}",
+      "UpstreamPathTemplate": "/person/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Delete", "Put" ],
       "UpstreamScheme": "http"
+
+
+
+    },
+    {
+      "UseServiceDiscovery": true,
+      "ServiceName": "ContactService",
+      "DownstreamPathTemplate": "/api/personinformation/{everything}",
+      "DownstreamScheme": "http",
+
+      "UpstreamPathTemplate": "/personinformation/{everything}",
+      "UpstreamHttpMethod": [ "Post", "Delete" ],
+      "UpstreamScheme": "http"
+
+
 
     },
     {
