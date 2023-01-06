@@ -1,15 +1,20 @@
 # TelefonRehberiSolution
 
 1- Solution dizininde komut satırı açarak docker-compose build komutunu çalıştırın.
+
 2- Build işlemi bittikten sonra docker-compose up komutunu çalıştırın.
+
 3- Proje ayağa kalktıktan sonra ister 5000 portundan apigateway üzerinden microservislere erişin
 yad aşağıdaki microservis portlarından iletişim sağlayabilirsiniz.
 
 
 
 ----------SQLSERVER----------
+
 ServerName: ipconfig v4 
+
 Login: sa
+
 Password: password@12345#
 
 
@@ -43,7 +48,9 @@ http://localhost:5000/swagger/index.html
 
 
 ----------Contact Api----------
+
 Aşağıdaki linkten methodları ve içeriklerini görebilirsiniz.
+
 http://localhost:5001/swagger/index.html
 
 1- Detaysız Kişi listesi(Get)                      :  http://localhost:5001/api/Person/persons 
@@ -64,7 +71,9 @@ http://localhost:5001/swagger/index.html
 
 
 ----------Report Api----------
+
 Aşağıdaki linkten methodları ve içeriklerini görebilirsiniz.
+
 http://localhost:5002/swagger/index.html
 
 8- Konum Raporları Getirme(Get)                    :  http://localhost:5002/api/Report/reportsGetEvent?location=antalya 
