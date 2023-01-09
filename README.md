@@ -11,7 +11,7 @@ yad aşağıdaki microservis portlarından iletişim sağlayabilirsiniz.
 
 ----------SQLSERVER----------
 
-ServerName: ipconfig v4 
+ServerName: ipconfig v4 ,1433
 
 Login: sa
 
